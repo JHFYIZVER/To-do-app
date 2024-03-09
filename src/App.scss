@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: max-content;
+  height: 100vh;
+  border: 1px solid #ccdbff;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 48px;
+  font-family: "Manrope", sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+.search-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+}
