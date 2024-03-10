@@ -16,7 +16,8 @@ const App = () => {
   ];
 
   const [state, setState] = useState(data);
-
+  const [filter, setFilter] = useState("All");
+  let maxId = state.length;
   const onDeleteItem = (id) => {
     setState(state.filter((item) => item.id !== id));
   };
@@ -32,30 +33,49 @@ const App = () => {
     );
   };
 
-  let maxId = state.length;
-
   const onAddItem = (title) => {
     const newItem = {
       id: ++maxId,
       title,
       favourited: false,
     };
-    setState([...state, newItem]);
+    if (title.trim() !== "") {
+      setState([...state, newItem]);
+    } else {
+      alert("Введите задачу");
+    }
   };
+
+  const onSearch = (value) => {
+    console.log(value);
+  };
+
+  const onFilter = (filter) => {
+    setFilter(filter);
+  };
+
+  let filteredData = state;
+  if (filter === "Favourited") {
+    filteredData = state.filter((el) => el.favourited);
+  }
 
   return (
     <div className="container">
       <h1 className="title">My todo-app</h1>
       <div className="search-panel">
-        <Search /> <ToDoFilter />
+        <Search onSearch={onSearch} /> <ToDoFilter onFilter={onFilter} />
       </div>
       <ToDoAddForm onAddItem={onAddItem} />
       <div>
-        <ToDoList
-          data={state}
-          onFavourites={onFavourites}
-          onDeleteItem={onDeleteItem}
-        />
+        {filteredData.length ? (
+          <ToDoList
+            data={filteredData}
+            onFavourites={onFavourites}
+            onDeleteItem={onDeleteItem}
+          />
+        ) : (
+          <div className="without-task">Задач нет!</div>
+        )}
       </div>
     </div>
   );

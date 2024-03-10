@@ -1,13 +1,16 @@
 import "./to-do-filter.scss";
 
-const ToDoFilter = () => {
-  return (
-    <div className="btn">
-      <button className="btn-all">All</button>
-      <button className="btn-All">Active</button>
-      <button className="btn-done">Done</button>
-    </div>
-  );
+const ToDoFilter = ({ onFilter }) => {
+  const dataBtn = [
+    { name: "All", label: "Все" },
+    { name: "Favourited", label: "Избранные" },
+  ];
+
+  const btn = dataBtn.map(({name, label}) => {
+    return <button onClick={() => onFilter(name)} key={name}>{label}</button>;
+  });
+
+  return <div className="btn">{btn}</div>;
 };
 
 export default ToDoFilter;

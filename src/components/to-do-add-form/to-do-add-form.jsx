@@ -5,19 +5,20 @@ import { useState } from "react";
 const ToDoAddForm = ({ onAddItem }) => {
   const [title, setValue] = useState("");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const resetValue = () => {
+    onAddItem(title)
+    setValue('')
+  }
 
   return (
     <div className="add-form">
       <input
         value={title}
-        onChange={handleChange}
+        onChange={(event) => setValue(event.target.value)}
         placeholder="Введите задачу..."
         type="text"
       />
-      <button onClick={() => onAddItem(title)}>Добавить</button>
+      <button onClick={resetValue}>Добавить</button>
     </div>
   );
 };
