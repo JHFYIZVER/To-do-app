@@ -4,6 +4,12 @@
   column-gap: 10px;
   justify-content: space-between;
 
+  h2 {
+    max-width: 200px;
+    text-wrap: wrap;
+    height: max-content;
+  }
+
   div {
     display: flex;
     align-items: center;

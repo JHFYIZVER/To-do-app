@@ -17,6 +17,9 @@ const App = () => {
 
   const [state, setState] = useState(data);
   const [filter, setFilter] = useState("All");
+  const [valueTitle, setSearch] = useState("");
+  let filteredData = state;
+
   let maxId = state.length;
   const onDeleteItem = (id) => {
     setState(state.filter((item) => item.id !== id));
@@ -46,17 +49,22 @@ const App = () => {
     }
   };
 
-  const onSearch = (value) => {
-    console.log(value);
-  };
-
   const onFilter = (filter) => {
     setFilter(filter);
   };
 
-  let filteredData = state;
   if (filter === "Favourited") {
     filteredData = state.filter((el) => el.favourited);
+  }
+
+  const onSearch = (value) => {
+    setSearch(value);
+  };
+
+  if (valueTitle.length > 0) {
+    filteredData = state.filter((el) =>
+      el.title.toLowerCase().includes(valueTitle.toLowerCase())
+    );
   }
 
   return (

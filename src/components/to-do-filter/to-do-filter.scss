@@ -2,24 +2,7 @@
   display: flex;
   column-gap: 20px;
 
-  &__item {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    &:hover {
-      background-color: #f5f5f5;
-    }
-
-    &--active {
-      background-color: #f5f5f5;
-    }
-  }
-
-  button {
+  .buttons {
     color: #fff;
     padding: 10px 20px;
     border: 1px solid #f5f5f5;
@@ -29,7 +12,17 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: rgb(204, 162, 239);
+      background-color: #ac95db;
     }
+  }
+
+  .active {
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #f5f5f5;
+    border-radius: 6px;
+    background-color: #9e7ce4;
+    cursor: pointer;
+    transition: all 0.3s;
   }
 }
